@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Phone, Mail, MapPin, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,16 +10,48 @@ const Contact = () => {
     message: ''
   });
   
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    setIsSubmitting(true);
     // Here you would handle form submission
-    alert('Form submitted! (This is just a demo)');
-  };
+    const serviceId = 'service_sxypgfo';
+    const templateId = 'template_jy1sxl8';
+    const userId = '4zCbQkzQH0mgmOZoy';
+  
+  emailjs.send(serviceId, templateId, {
+    from_name: formData.name,
+    from_email: formData.email,
+    subject: formData.subject,
+    message: formData.message
+  }, userId)
+    .then((result) => {
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    })
+    .catch((error) => {
+      setSubmitStatus('error');
+      console.error('Email error:', error);
+    })
+    .finally(() => {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus(null), 5000); // Clear status after 5 seconds
+    });
+};
+
+
+
+
+
+
+
+
 
   return (
     <section id="contact" className="py-16 md:py-24 bg-gray-50 px-4">
@@ -150,13 +183,30 @@ const Contact = () => {
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
                 ></textarea>
               </div>
-              
+              {submitStatus === 'success' && (
+              <div className="mt-4 p-3 bg-green-100 text-green-700 rounded-md">
+                Message sent successfully! I'll get back to you soon.
+              </div>
+            )}
+            {submitStatus === 'error' && (
+              <div className="mt-4 p-3 bg-red-100 text-red-700 rounded-md">
+                There was a problem sending your message. Please try again later.
+              </div>
+            )}
+
+
+
+
               <button 
                 type="submit" 
                 className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-md transition-colors duration-300"
               >
+                {isSubmitting ? 'Sending...' : (
+                <>
                 <Send size={18} />
                 Send Message
+                </>
+                )}
               </button>
             </form>
           </div>
