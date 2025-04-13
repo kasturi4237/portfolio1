@@ -63,30 +63,31 @@ const ProjectCard = ({ title, description, image, tech, liveUrl, githubUrl }) =>
 
 const Projects = () => {
   const projects = [
-    {
-      title: "Tour and Travel Website",
-      description: "A responsive travel website for booking tours and hotels with filters, secure payments, and user reviews.",
-      image: "/api/placeholder/600/400",
-      tech: ["React.js", "Node.js", "Express.js", "Stripe", "PayPal", "Vercel"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/kasturi4237"
-    },
+    
     {
       title: "E-Commerce Website",
       description: "A fully functional e-commerce platform with product catalog, search, filtering, and shopping cart functionalities.",
-      image: "/api/placeholder/600/400",
+      image: "/images/ecommerce-site.jpg",
       tech: ["React.js", "Node.js", "Express.js", "Tailwind CSS", "Vercel"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/kasturi4237"
+      liveUrl: "https://shoppingwebsite-liart.vercel.app/",
+      githubUrl: "https://github.com/kasturi4237/shoppingwebsite"
     },
     {
-      title: "Social Media App",
-      description: "A social media platform with profile management, real-time chat and notifications using WebSockets.",
-      image: "/api/placeholder/600/400",
-      tech: ["React.js", "Node.js", "Express.js", "WebSockets", "MongoDB", "Vercel"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/kasturi4237"
-    }
+      title: "GitHub Profile Analyzer",
+      description: "A React + TypeScript app that analyzes public GitHub activity like repositories and a daily commit chart using ShadCN UI components. ",
+      image: "/images/gitHub-profile-Analyzer.jpg",
+      tech: ["React.js","TypeScript","ShadCN UI","Tailwind CSS"],
+      liveUrl: "https://github-profile-analyzer-dun.vercel.app/",
+      githubUrl: "https://github.com/kasturi4237/github-profileAnalyzer"
+    },
+    {
+        title: "Tour and Travel Website",
+        description: "A responsive travel website for booking tours and hotels with filters, secure payments, and user reviews.",
+        image: "/images/travel-website.jpg",
+        tech: ["React.js", "Node.js", "Express.js", "Stripe", "PayPal", "Vercel"],
+        liveUrl: "https://tourand-travel-jade.vercel.app/",
+        githubUrl: "https://github.com/kasturi4237/tourandTravel"
+      }
   ];
 
   return (

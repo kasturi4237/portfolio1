@@ -23,7 +23,7 @@ const About = () => {
                 <a href="#projects" className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-md transition-colors duration-300">
                   My Projects
                 </a>
-                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="px-6 py-2 border border-indigo-600 text-indigo-600 font-medium rounded-md hover:bg-indigo-50 transition-colors duration-300">
+                <a href="/resume1.pdf" target="_blank" rel="noopener noreferrer" className="px-6 py-2 border border-indigo-600 text-indigo-600 font-medium rounded-md hover:bg-indigo-50 transition-colors duration-300">
                   Download Resume
                 </a>
               </div>
